@@ -1,0 +1,39 @@
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Local databases
+*.db
+*.sqlite
+*.sqlite3
+
+# Credentials / keys
+*.pem
+*.key
+
+# VS Code
+.vscode/
+
+# Raw and processed data
+data/raw/
+data/processed/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Database backups
+*.dump
+*.backup
+*.sql.gz
+
+# Logs
+*.log

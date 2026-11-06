@@ -1,0 +1,31 @@
+
+-- NESA Data Platform
+-- Create core reference tables
+
+CREATE TABLE IF NOT EXISTS core.regions (
+    region_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    region_name VARCHAR(100) NOT NULL UNIQUE,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS core.countries (
+    country_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    country_name VARCHAR(150) NOT NULL UNIQUE,
+    country_code CHAR(2) UNIQUE,
+    region_id BIGINT REFERENCES core.regions(region_id),
+    created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS core.regions (
+    region_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    region_name VARCHAR(100) NOT NULL UNIQUE,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS core.countries (
+    country_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    country_name VARCHAR(150) NOT NULL UNIQUE,
+    country_code CHAR(2) UNIQUE,
+    region_id BIGINT REFERENCES core.regions(region_id),
+    created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
