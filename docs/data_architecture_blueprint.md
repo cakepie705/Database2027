@@ -1,44 +1,56 @@
-
 # NESA Education Data Platform — Architecture Blueprint
 
 ## 1. Purpose
 
-Build a governed, reliable and maintainable education data platform using Snowflake.
+Build a secure, governed, reliable and maintainable education data platform using PostgreSQL.
 
-## 2. Database
+The platform will operate separately from NESA's live production system and support data ingestion, transformation, quality management and analytics.
 
-- Database: NESA_EDUCATION
+## 2. Technology
 
-## 3. Data Layers
+- Primary database: PostgreSQL 16
+- Database environment: Docker
+- Programming language: Python
+- Query language: SQL
+- Development environment: Visual Studio Code
+- Version control: GitHub
+
+## 3. Database Architecture
+
+The platform will use four logical data layers.
 
 ### RAW
-Stores ingested source data and preserves source values for traceability.
+
+Stores ingested source data while preserving original values and source information for traceability.
 
 ### STAGING
-Standardises incoming data and applies data-quality checks before modelling.
+
+Standardises incoming data and applies validation, cleaning and data-quality checks.
 
 ### CORE
-Stores structured, trusted education data with defined entities and relationships.
+
+Stores structured, trusted education data with defined entities, relationships and constraints.
 
 ### ANALYTICS
-Provides governed views and datasets for reporting and analysis.
+
+Provides reporting views and analytical datasets for business intelligence and decision-making.
 
 ## 4. Data Flow
 
-Source Systems
-    -> Ingestion
-    -> RAW
-    -> STAGING
-    -> CORE
-    -> ANALYTICS
-    -> Reports and Dashboards
+Source Systems  
+→ Python Ingestion  
+→ PostgreSQL RAW  
+→ STAGING  
+→ CORE  
+→ ANALYTICS  
+→ Reports and Dashboards
 
 ## 5. Architecture Principles
 
-- Preserve traceability to source data.
+- Preserve source data and traceability.
 - Make ingestion repeatable and safe to rerun.
 - Validate data before promoting it between layers.
-- Apply least-privilege access controls.
+- Apply least-privilege database access.
 - Protect sensitive education data.
 - Document data definitions and transformations.
 - Monitor pipeline failures and data quality.
@@ -48,11 +60,17 @@ Source Systems
 
 - Record ingestion status and timestamps.
 - Detect duplicate and invalid records.
-- Validate schemas and important business rules.
+- Validate schemas and business rules.
 - Provide clear error logging.
 - Support recovery and controlled reprocessing.
+- Maintain database backups.
 
-## 7. Implementation Status
+## 7. Architecture Ownership
 
-This document defines the initial target architecture.
-Existing SQL scripts, Python code, security controls and deployed Snowflake objects must be inspected before implementation status is confirmed.
+The Data Architect is responsible for the overall architecture, database design standards, technical direction, documentation and architectural decisions.
+
+## 8. Implementation Status
+
+PostgreSQL is the selected database platform.
+
+Existing SQL scripts, Python code, database schemas, security controls and deployed objects must be reviewed before implementation status is confirmed.
